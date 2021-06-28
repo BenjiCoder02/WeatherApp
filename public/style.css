@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-image: linear-gradient(
+    45deg,
+    rgb(8, 96, 173),
+    rgb(79, 147, 211),
+    rgb(115, 183, 247),
+    rgb(115, 183, 247)
+  );
+  background-repeat: no-repeat;
+  object-fit: cover;
+  padding: 20%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0vh auto;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 60px;
+  font-weight: 800;
+}
+
+.logo img {
+  width: 15%;
+}
+
+.cityInputLabel {
+  color: white;
+  font-size: 25px;
+}
+
+#cityInput {
+  font-size: 20px;
+  border-radius: 10px;
+  margin: 5% 2%;
+  color: grey;
+  padding: 0.5%;
+  text-align: center;
+}
+
+#cityInput::placeholder {
+  text-align: center;
+  font-size: 15px;
+}
+
+button {
+  display: flex;
+  justify-content: space-around;
+  width: auto;
+  height: 80px;
+  background-color: transparent;
+  border: none;
+}
+
+button div {
+  height: 30px;
+  width: 40px;
+  border: 10px solid white;
+  border-top: transparent;
+  border-left: transparent;
+  margin: auto 5%;
+  transform: rotate(-45deg);
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.blink {
+  border: 10px solid rgb(167, 167, 167);
+  border-top: transparent;
+  border-left: transparent;
+}
+
+.temperature,
+.date,
+.description {
+  color: white;
+  text-align: center;
+}
+
+#image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5%;
+}
+
+.temperature {
+  font-size: 40px;
+}
+
+.description {
+}
+
+.date {
+  font-size: 6vw;
+  margin: 15%;
+}
