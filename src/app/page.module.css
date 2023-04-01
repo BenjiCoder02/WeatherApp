@@ -50,10 +50,11 @@
 
 .card {
   padding: 1rem 1.2rem;
-  border-radius: var(--border-radius);
   background: rgba(var(--card-rgb), 0);
   border: 1px solid rgba(var(--card-border-rgb), 0);
   transition: background 200ms, border 200ms;
+  height: 100%;
+  min-height: 40vh;
 }
 
 .card span {
@@ -111,6 +112,16 @@
   position: relative;
 }
 
+.logo {
+  color: #fff;
+  font-family: var(--font-mono);
+  filter: none !important;
+  padding: 0.8rem;
+  margin: auto;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
 .thirteen {
   display: flex;
   justify-content: center;
@@ -145,11 +156,9 @@
   inset: 0;
   padding: 1px;
   border-radius: var(--border-radius);
-  background: linear-gradient(
-    to bottom right,
-    rgba(var(--tile-start-rgb), 1),
-    rgba(var(--tile-end-rgb), 1)
-  );
+  background: linear-gradient(to bottom right,
+      rgba(var(--tile-start-rgb), 1),
+      rgba(var(--tile-end-rgb), 1));
   background-clip: content-box;
 }
 
@@ -228,11 +237,9 @@
     border-radius: 0;
     border: none;
     border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
+    background: linear-gradient(to bottom,
+        rgba(var(--background-start-rgb), 1),
+        rgba(var(--callout-rgb), 0.5));
     background-clip: padding-box;
     backdrop-filter: blur(24px);
   }
@@ -261,6 +268,7 @@
   from {
     transform: rotate(360deg);
   }
+
   to {
     transform: rotate(0deg);
   }
@@ -269,4 +277,64 @@
 .locationForm {
   background-color: #fff;
   min-height: 45%;
+  border-radius: 15px;
+}
+
+.heading,
+.linkDark {
+  color: black;
+  font-weight: bolder;
+  height: 40px;
+}
+
+.flexColumnCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 200px;
+  animation-duration: 2s;
+  opacity: 0;
+  position: relative;
+  top: -50px;
+  animation-name: fade-in-top;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in-top {
+  from {
+    opacity: 0;
+    top: -50px;
+  }
+
+  to {
+    opacity: 1;
+    top: 0;
+  }
+
+}
+
+.flexColumnCenter input,
+.flexColumnCenter button {
+  height: 40px;
+  width: 100%;
+  background-color: rgb(192, 192, 192, 0.5);
+  padding: 0px 10px;
+  color: black;
+  font-size: 1.2rem;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+}
+
+.flexColumnCenter button {
+  width: 70%;
+  font-weight: 900;
+  height: auto;
+  padding: 15px;
+}
+
+.flexColumnCenter button:hover {
+  background-color: rgb(172, 172, 172, 0.5);
+  cursor: pointer;
 }

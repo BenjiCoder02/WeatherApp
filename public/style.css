@@ -6,13 +6,11 @@
 }
 
 body {
-  background-image: linear-gradient(
-    45deg,
-    rgb(8, 96, 173),
-    rgb(79, 147, 211),
-    rgb(115, 183, 247),
-    rgb(115, 183, 247)
-  );
+  background-image: linear-gradient(45deg,
+      rgb(8, 96, 173),
+      rgb(79, 147, 211),
+      rgb(115, 183, 247),
+      rgb(115, 183, 247));
   background-repeat: no-repeat;
   object-fit: cover;
   padding: 20%;
@@ -34,7 +32,7 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 60px;
   font-weight: 800;
 }
@@ -107,8 +105,7 @@ button div {
   font-size: 40px;
 }
 
-.description {
-}
+.description {}
 
 .date {
   font-size: 6vw;
