@@ -9,15 +9,13 @@
 
 .description {
   display: inherit;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   font-size: 0.85rem;
-  max-width: var(--max-width);
   width: 100%;
   z-index: 2;
   font-family: var(--font-mono);
   flex: 1;
-  width: 500px;
 }
 
 .description a {
@@ -285,6 +283,7 @@
   color: black;
   font-weight: bolder;
   height: 40px;
+  text-align: center;
 }
 
 .flexColumnCenter {
@@ -317,7 +316,6 @@
 .flexColumnCenter input,
 .flexColumnCenter button {
   height: 40px;
-  width: 100%;
   background-color: rgb(192, 192, 192, 0.5);
   padding: 0px 10px;
   color: black;
@@ -325,16 +323,51 @@
   border-radius: 15px;
   border: none;
   outline: none;
+  margin: 0px 10px;
 }
 
 .flexColumnCenter button {
-  width: 70%;
   font-weight: 900;
-  height: auto;
-  padding: 15px;
 }
 
 .flexColumnCenter button:hover {
   background-color: rgb(172, 172, 172, 0.5);
   cursor: pointer;
+}
+
+.weatherPage {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: stretch;
+}
+
+.weatherPage .locationForm {
+  flex: 1;
+}
+
+.bar .flexColumnCenter {
+  flex-direction: row;
+  min-height: auto;
+  justify-content: center;
+}
+
+.searchBar {
+  position: relative;
+}
+
+.options {
+  background-color: white;
+  color: black;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 250px;
+  margin: inherit;
+  padding: inherit;
+}
+
+.options option {
+  cursor: pointer;
+  border: 0.5px solid rgb(80, 78, 78);
 }
