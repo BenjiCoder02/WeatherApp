@@ -9,7 +9,10 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.description}>
         <div className={styles.locationForm}>
-          <input type="text"/>
+          <div className={styles.card}>
+            <h2 className={styles.heading}>Welcome to the Weather App!</h2>
+            <a className={styles.linkDark} href='/weather'>Click Here to get started</a>
+          </div>
         </div>
       </div>
     </main>

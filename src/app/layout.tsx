@@ -1,4 +1,5 @@
 import './globals.css'
+import styles from './page.module.css'
 
 export const metadata = {
   title: 'Create Next App',
@@ -12,7 +13,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <nav>
+          <h2 className={styles.logo}>Weather App</h2>
+        </nav>
+        {children}</body>
     </html>
   )
 }
