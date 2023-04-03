@@ -7,16 +7,42 @@ const inter = Inter({ subsets: ['latin'] });
 
 const citiesList = cities;
 
+interface InputEvent extends React.ChangeEvent<HTMLInputElement> {
+  target: HTMLInputElement & EventTarget;
+}
+
+interface OptionClickEvent extends React.MouseEvent<HTMLOptionElement> {
+  target: HTMLOptionElement & EventTarget;
+}
+
+interface Weather {
+  icon: String,
+}
+
+interface WeatherData {
+  name: String,
+  sys: {
+    country: String,
+    sunrise: number,
+    sunset: number,
+  },
+  main: {
+    temp: number,
+    temp_max: number,
+    temp_min: number,
+  },
+  weather: Array<Weather>,
+}
 
 
 export default function Home() {
   const [city, setCity] = useState('');
-  const [weatherData, setWeatherData] = useState({});
-  const [searchData, setSearchData] = useState([]);
+  const [weatherData, setWeatherData] = useState<WeatherData | undefined>(undefined);
+  const [searchData, setSearchData] = useState<String[]>([]);
   const [showOptions, setShowOptions] = useState(false);
 
-  const handleInputChange = useCallback((event: KeyboardEvent) => {
-    const { value } = event?.target;
+  const handleInputChange = useCallback((event: InputEvent) => {
+    const { value } = event.target;
     if (city.length >= 2) {
       setShowOptions(true);
       const searchFilter = citiesList.filter((c) =>
@@ -32,8 +58,8 @@ export default function Home() {
     }
   }, [city]);
 
-  const handleOptionClick = (e) => {
-    setCity(e.target.value);
+  const handleOptionClick = (event: OptionClickEvent) => {
+    setCity(event.target.value);
     setShowOptions(false);
   }
 
@@ -45,14 +71,14 @@ export default function Home() {
     setWeatherData(data);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setWeatherData({});
+    setWeatherData(undefined);
     setShowOptions(false);
     getWeatherForCity();
   }
 
-  function millisToMinutesAndSeconds(millis) {
+  function millisToMinutesAndSeconds(millis: number) {
     const date = new Date(millis);
     const minutes = date.getMinutes();
     const hours = date.getHours();
@@ -70,9 +96,9 @@ export default function Home() {
                 <label htmlFor="search-bar">City</label>
                 <input type='text' onChange={handleInputChange} value={city} id="search-bar" />
                 <div className={styles.options}>
-                  {showOptions && searchData.map((data) => {
+                  {showOptions && searchData.map((data, idx) => {
                     return (
-                      <option key={data} onClick={handleOptionClick}>{data}</option>
+                      <option key={idx} onClick={handleOptionClick}>{data}</option>
                     );
                   })}
                 </div>
@@ -84,12 +110,12 @@ export default function Home() {
       </div>
       <div className={styles.locationFormInfo}>
         <div className={styles.card}>
-          {weatherData.name &&
+          {weatherData?.name &&
             <div className={styles.gridWeather}>
               <h3 className={styles.heading}>City: {weatherData.name}</h3>
               <h3 className={styles.heading}>Country: {weatherData.sys.country}</h3>
               <h3 className={styles.heading}>Sunrise: {millisToMinutesAndSeconds(weatherData.sys.sunrise)}</h3>
-              <h3 className={styles.heading}>Sunset: {millisToMinutesAndSeconds(weatherData.sys.sunrise)}</h3>
+              <h3 className={styles.heading}>Sunset: {millisToMinutesAndSeconds(weatherData.sys.sunset)}</h3>
               <h3 className={styles.heading}>Current Temperature: {weatherData.main.temp} &deg;C</h3>
               <h3 className={styles.heading}>High: {weatherData.main.temp_max}&deg;C</h3>
               <h3 className={styles.heading}>Low: {weatherData.main.temp_min}&deg;C</h3>
@@ -98,7 +124,6 @@ export default function Home() {
           }
         </div>
       </div>
-
     </main>
   )
 }
